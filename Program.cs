@@ -27,20 +27,20 @@ namespace BlogsConsole
                 {
                     logger.Info("Option 1 selected");
                     // Display all Blogs from the database
-                    var query = db.Blogs.OrderBy(b => b.Name);
-
-                    if (query != null)
+                    var bName = db.Blogs.OrderBy(b => b.BlogId);
+                    if (bName != null)
                     {
                         Console.WriteLine("All blogs in the database:");
-                        foreach (var blogName in query)
-                        {
+                        foreach (var blogName in bName)
+                        {   
                             Console.WriteLine(blogName.Name);
                         }
+
                     }
                     else
                     {
                         {
-                            Console.WriteLine("No blogs available");
+                            logger.Info("No blogs available");
                         }
 
                     }
@@ -50,17 +50,24 @@ namespace BlogsConsole
                     // Create and save a new Blog
                     Console.Write("Enter a name for a new Blog: ");
                     var name = Console.ReadLine();
-                    var blog = new Blog { Name = name };
-                    db.AddBlog(blog);
-                    logger.Info("Blog added - {name}", name);
+                    if (name != "null")
+                    {
+                        var blog = new Blog { Name = name };
+                        db.AddBlog(blog);
+                        logger.Info("Blog added - {name}", name);
+                    }
+                    else 
+                    {
+                        logger.Info("Blog name cannot be null");
+                    }
 
                 }
                 else if (choice == "3")
                 {
-                    Console.WriteLine(":" );
+                    Console.WriteLine(":");
                     var title = Console.ReadLine();
-                    var postTitle = new Post {Title = title};
-                    
+                    var postTitle = new Post { Title = title };
+
                 }
                 else if (choice == "4")
                 {
