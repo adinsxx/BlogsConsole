@@ -27,12 +27,14 @@ namespace BlogsConsole
                 {
                     logger.Info("Option 1 selected");
                     // Display all Blogs from the database
-                    var bName = db.Blogs.OrderBy(b => b.BlogId);
-                    if (bName != null)
+                    var bId = db.Blogs.OrderBy(b => b.BlogId);
+
+                    if (bId != null)
                     {
                         Console.WriteLine("All blogs in the database:");
-                        foreach (var blogName in bName)
+                        foreach (var blogName in bId)
                         {   
+                            Console.Write(blogName.BlogId + " ");
                             Console.WriteLine(blogName.Name);
                         }
 
@@ -67,6 +69,9 @@ namespace BlogsConsole
                     Console.WriteLine(":");
                     var title = Console.ReadLine();
                     var postTitle = new Post { Title = title };
+                    db.AddPost(postTitle);
+                    logger.Info("Post added - {title}", title);
+
 
                 }
                 else if (choice == "4")
