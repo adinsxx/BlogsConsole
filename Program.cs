@@ -65,22 +65,6 @@ namespace BlogsConsole
                             db.AddBlog(blog);
                             logger.Info("Blog added - {name}", blog.Name);
                         }
-
-                //                             // Create and save a new Blog
-                //     Console.Write("Enter a name for a new Blog: ");
-                //     var name = Console.ReadLine();
-                //     if (name != "null")
-                //     {
-                //         var blog = new Blog { Name = name };
-                //         db.AddBlog(blog);
-                //         logger.Info("Blog added - {name}", name);
-                //     }
-                //     else 
-                //     {
-                //         logger.Info("Blog name cannot be null");
-                //     }
-
-                // }
                     }
 
                     else if (choice == "3")
@@ -106,8 +90,6 @@ namespace BlogsConsole
                         {
                             logger.Info("Post title cannot be null");
                         }
-
-
 
                     }
                     else if (choice == "4")
@@ -232,7 +214,7 @@ namespace BlogsConsole
                 }
                 return null;
             }
-            return null;
+            return blog;
         }
     }
 }
